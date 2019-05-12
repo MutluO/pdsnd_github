@@ -22,7 +22,8 @@ def get_filters():
     print('Hello! Let\'s explore some US bikeshare data!')
     # TO DO: get user input for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid inputs
     while True:
-        city = input('Would you like to see data for Chicago, New York City or Washington?\n').lower()
+        city = input('Would you like to see data for the first 6 months'+
+        ' of 2017 for Chicago, New York City or Washington?\n').lower()
         if city not in ('chicago', 'new york city', 'washington'):
 
             print('Incorrect city. Please try again!\n')
@@ -33,8 +34,11 @@ def get_filters():
 
     # TO DO: get user input for month (all, january, february, ... , june)
     while True:
-        month = input('For which month would you like to filter the data all, january, february, march, april, may or june?\n').lower()
-        if month not in ('all', 'january', 'february', 'march', 'april', 'may', 'june'):
+        month = input('For which of the first 6 months of 2017 would you like'+
+        ' to filter the data all, january, february, march, april, may'+
+        ' or june?\n').lower()
+        if month not in ('all', 'january', 'february', 'march', 'april',
+         'may', 'june'):
 
             print('Incorrect filter selection. Please try again!\n')
             continue
@@ -44,8 +48,11 @@ def get_filters():
 
     # TO DO: get user input for day of week (all, monday, tuesday, ... sunday)
     while True:
-        day = input('For which week day would you like to filter the data all, monday, tuesday, wednesday, thursday, friday, saturday or sunday?\n').lower()
-        if day not in ('all', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'):
+        day = input('For which week day would you like to filter the data'+
+        ' all, monday, tuesday, wednesday, thursday, friday, saturday'+
+        ' or sunday?\n').lower()
+        if day not in ('all', 'monday', 'tuesday', 'wednesday', 'thursday',
+         'friday', 'saturday', 'sunday'):
 
             print('Incorrect filter selection. Please try again!\n')
             continue
@@ -226,12 +233,17 @@ def user_stats(df,city):
 
 def raw_data(df):
     """Displays rows of raw data city table at one time. Per each order 5 more rows"""
-    i=0
+
+    num_rows=0
+
     while True:
-        raw_data_request = input('If you would like to see raw data for the city selected, answer with yes or no.\n').lower()
-        i+=5
+        raw_data_request = input('If you would like to see raw data for the'+
+        ' city selected, answer with yes or no.\n').lower()
+
+        num_rows+=5
+
         if raw_data_request == 'yes':
-            display_raw_data = df.head(i)
+            display_raw_data = df.head(num_rows)
             print(display_raw_data)
             print('\nFor further data answer with yes to break answer with no!\n')
             continue
